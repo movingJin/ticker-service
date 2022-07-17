@@ -34,7 +34,7 @@ public class TickerHistoryService implements InitializingBean {
     private final TickerEOSRepository tickerEOSRepository;
     private final TickerETHRepository tickerETHRepository;
     private final TickerLINKRepository tickerLINKRepository;
-    private final TickerLTCRepository tickerLTCRepository;
+    //private final TickerLTCRepository tickerLTCRepository; //LTC 상장폐지
     private final TickerTRXRepository tickerTRXRepository;
     private final TickerXLMRepository tickerXLMRepository;
     private final TickerXRPRepository tickerXRPRepository;
@@ -50,7 +50,7 @@ public class TickerHistoryService implements InitializingBean {
             TickerEOS.class,
             TickerETH.class,
             TickerLINK.class,
-            TickerLTC.class,
+            // TickerLTC.class,
             TickerTRX.class,
             TickerXLM.class,
             TickerXRP.class);
@@ -69,7 +69,7 @@ public class TickerHistoryService implements InitializingBean {
         List<TickerEOS> eoss = tickerEOSRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
         List<TickerETH> eths = tickerETHRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
         List<TickerLINK> links = tickerLINKRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
-        List<TickerLTC> ltcs = tickerLTCRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
+        //List<TickerLTC> ltcs = tickerLTCRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120)); //LTC 상장폐지
         List<TickerTRX> trxs = tickerTRXRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
         List<TickerXLM> xlms = tickerXLMRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
         List<TickerXRP> xrps = tickerXRPRepository.findByTimeTagBefore(LocalDateTime.now().minusDays(120));
@@ -81,7 +81,7 @@ public class TickerHistoryService implements InitializingBean {
         tickerEOSRepository.deleteAll(eoss);
         tickerETHRepository.deleteAll(eths);
         tickerLINKRepository.deleteAll(links);
-        tickerLTCRepository.deleteAll(ltcs);
+        //tickerLTCRepository.deleteAll(ltcs); //LTC 상장폐지
         tickerTRXRepository.deleteAll(trxs);
         tickerXLMRepository.deleteAll(xlms);
         tickerXRPRepository.deleteAll(xrps);
@@ -93,7 +93,7 @@ public class TickerHistoryService implements InitializingBean {
         TickerEOS eos = bithumbApiService.getTicker(TickerEOS.class, Coin.EOS.name());
         TickerETH eth = bithumbApiService.getTicker(TickerETH.class, Coin.ETH.name());
         TickerLINK link = bithumbApiService.getTicker(TickerLINK.class, Coin.LINK.name());
-        TickerLTC ltc = bithumbApiService.getTicker(TickerLTC.class, Coin.LTC.name());
+        //TickerLTC ltc = bithumbApiService.getTicker(TickerLTC.class, Coin.LTC.name()); //LTC 상장폐지
         TickerTRX trx = bithumbApiService.getTicker(TickerTRX.class, Coin.TRX.name());
         TickerXLM xlm = bithumbApiService.getTicker(TickerXLM.class, Coin.XLM.name());
         TickerXRP xrp = bithumbApiService.getTicker(TickerXRP.class, Coin.XRP.name());
@@ -103,7 +103,7 @@ public class TickerHistoryService implements InitializingBean {
         tickerEOSRepository.save(eos);
         tickerETHRepository.save(eth);
         tickerLINKRepository.save(link);
-        tickerLTCRepository.save(ltc);
+        //tickerLTCRepository.save(ltc); //LTC 상장폐지
         tickerTRXRepository.save(trx);
         tickerXLMRepository.save(xlm);
         tickerXRPRepository.save(xrp);
